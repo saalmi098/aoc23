@@ -15,13 +15,6 @@ class Edge:
 class Vertex:
     def __init__(self, v_id, text, x, y, graph) -> None:
         self.v_id = v_id
-        # self.is_start = True if text == CONST_START else False
-        # self.is_end = True if text == CONST_END else False
-        # if self.is_start:
-        #     text = "a"
-        # elif self.is_end:
-        #     text = "z"
-
         self.text = text
         self.x = x
         self.y = y
@@ -209,7 +202,7 @@ for galaxy in range(1, graph.galaxy_counter + 1):
     source = galaxy
     for target in range(1, graph.galaxy_counter + 1):
         if source == target or (source, target) in paths_determined or (target, source) in paths_determined:
-            # print("skipped: ", source, "->", target)
+            print("skipped: ", source, "->", target)
             continue
 
         path = graph.dijkstra(str(source), str(target))
@@ -217,14 +210,8 @@ for galaxy in range(1, graph.galaxy_counter + 1):
         sum_path_length += len(path) - 1
         paths_determined.add((source, target))
 
-# path = graph.dijkstra("1", "2")
-# graph.print_path(path)
-# path = graph.dijkstra("1", "3")
-
 
 end = time.time()
 print("duration dijkstra: " + str(end - start))
 
-# graph.print_map()
-# graph.print_path(path)
 print(sum_path_length)
